@@ -21,7 +21,7 @@ ULTRAWIDE_SIZE = {
     'game' : (790, 170, 960, 600),
     'full' : (0, 0, 2560, 1080)}
 
-
+actual_size = ULTRAWIDE_SIZE
 
 #method
 METHOD = cv2.TM_CCOEFF_NORMED
@@ -29,10 +29,10 @@ METHOD = cv2.TM_CCOEFF_NORMED
 #THRESHOLD
 TH = 0.8
 
-
+#pyautogui  pause
 atg.PAUSE = 0.1
-actual_size = ULTRAWIDE_SIZE
-work_time = 0
+
+
 
 def seach_img(background_img, img):
     result = cv2.matchTemplate(background_img, img, METHOD)
@@ -86,7 +86,6 @@ def all_work():
                 if seach_click(WORK_ALL_IMG, sleep_time=3):
                     if seach_click(CLOSE_IMG):
                         if seach_click(DOWN_ARROW_IMG):
-                            print("All Heroes Working!")
                             success = True
         if not success:
             close_heroes()
@@ -114,7 +113,7 @@ def login_play():
         login_play()
 
 def main():
-    print("BOMBBOT")
+    print("BOMBBOT\n")
     work_time = int(input("Digite o tempo de trabalho (em minutos): "))
     work_time *= 60
 
@@ -140,10 +139,10 @@ def main():
         runtime_count += 10
 
         print("BOMBBOT\n")
-        print("Runtime: {:.2f} min".format(runtime_count / 60))
-        print("Timer: {:.2f} min".format(timer / 60))
-        print("Total Errors:", error_count)
-        print("Work Count:", work_count)
+        print("Tempo de Execução: {:.2f} min".format(runtime_count / 60))
+        print("Timer: {:.2f} min".format(work_time - (timer / 60)))
+        print("Total de Erros:", error_count)
+        print("Contador de Trabalho:", work_count)
 
 main()
     
